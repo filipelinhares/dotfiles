@@ -1,0 +1,168 @@
+#!/usr/bin/env bash
+
+# Utilities
+# --  --  --  --  --  --  --  --  --  --  --  --  --  --
+
+dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+link() {
+  from="$1"
+  to="$2"
+  echo "Linking '$to' -> '$from'"
+  rm -f $to
+  ln -s "$from" "$to"
+}
+
+log() {
+  message="$1"
+  echo "#===> $message"
+}
+
+log_done() {
+  echo "#===> Done!"
+  echo "\n\n\n\n\n\n"
+}
+
+# --  --  --  --  --  --  --  --  --  --  --  --  --  --
+
+sudo add-apt-repository -y ppa:webupd8team/atom
+sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+sudo add-apt-repository -y ppa:ubuntu-mozilla-daily/ppa
+sudo add-apt-repository -y ppa:rael-gc/scudcloud
+sudo apt-key -y adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886
+echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+
+wget -qO - "https://dl-ssl.google.com/linux/linux_signing_key.pub" | sudo apt-key add - &> /dev/null
+sudo sh -c "printf 'deb http://dl.google.com/linux/deb/ stable main' >> '/etc/apt/sources.list.d/google-chrome.list'"
+
+wget -qO - "http://deb.opera.com/archive.key" | sudo apt-key add - &> /dev/null
+sudo sh -c "printf 'deb http://deb.opera.com/opera/ stable non-free' >> '/etc/apt/sources.list.d/opera.list'"
+
+sudo apt-get update
+
+log "Installing GIT"
+sudo apt-get install --allow-unauthenticated -qqy git
+log_done
+
+log "Installing Atom"
+sudo apt-get install --allow-unauthenticated -qqy atom
+log_done
+
+log "Installing Sublime Text 3"
+sudo apt-get install --allow-unauthenticated -qqy sublime-text-installer
+log_done
+
+
+log "Installing Chrome"
+sudo apt-get install --allow-unauthenticated -qqy google-chrome-unstable
+log_done
+
+log "Installing Chromium"
+sudo apt-get install --allow-unauthenticated -qqy chromium-browser
+log_done
+
+log "Installing cURL"
+sudo apt-get install --allow-unauthenticated -qqy curl
+log_done
+
+log "Installing Firefox"
+sudo apt-get install --allow-unauthenticated -qqy firefox-trunk
+log_done
+
+log "Installing Flash"
+sudo apt-get install --allow-unauthenticated -qqy flashplugin-installer
+log_done
+
+log "Installing Inkscape"
+sudo apt-get install --allow-unauthenticated -qqy inkscape
+log_done
+
+log "Installing Imagemagick"
+sudo apt-get install --allow-unauthenticated -qqy imagemagick
+log_done
+
+log "Installing Opera"
+sudo apt-get install --allow-unauthenticated -qqy opera
+log_done
+
+log "Installing Opera Next"
+sudo apt-get install --allow-unauthenticated -qqy opera-next
+log_done
+
+log "Installing Tasque"
+sudo apt-get install --allow-unauthenticated -qqy tasque
+log_done
+
+log "Installing Scudcloud"
+sudo apt-get install --allow-unauthenticated -qqy scudcloud
+log_done
+
+log "Installing Virtualbox"
+sudo apt-get install --allow-unauthenticated -qqy virtualbox
+log_done
+
+log "Installing VLC"
+sudo apt-get install --allow-unauthenticated -qqy vlc
+log_done
+
+log "Installing xclip"
+sudo apt-get install --allow-unauthenticated -qqy xclip
+log_done
+
+log "Installing ZSH"
+sudo apt-get install --allow-unauthenticated -qqy zsh
+log_done
+
+log "Installing Postgres"
+sudo apt-get install --allow-unauthenticated -qqy postgresql-common postgresql-9.3 libpq-dev
+log_done
+
+log "Rescuetime"
+wget https://www.rescuetime.com/setup/installer?os=amd64deb -qO
+sudo dpkg -i rescuetime_current_amd64.deb
+log_done
+
+log "Spotify"
+sudo apt-get install --allow-unauthenticated -qqy spotify-client
+log_done
+
+# Ruby build dependencies
+sudo apt-get install --allow-unauthenticated -qqy autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+
+# gitconfig
+wget --quiet https://raw.githubusercontent.com/filipelinhares/dotfiles/master/gitconfig -O $HOME/.gitconfig
+
+log "Setting up oh-my-zsh"
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+chsh -s `which zsh`
+log_done
+
+log "Setting up NVM"
+curl https://raw.githubusercontent.com/creationix/nvm/v0.23.3/install.sh | bash
+log_done
+
+log "Setting up rbenv"
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+log_done
+
+log "Setting up base16 color"
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+log_done
+
+log "Font Monaco"
+curl -kL https://raw.github.com/cstrap/monaco-font/master/install-font-ubuntu.sh | bash
+log_done
+
+# Dotfiles
+echo "\n\n\n\n\n\n"
+echo "#=> Setting up dotfiles"
+wget https://raw.githubusercontent.com/filipelinhares/monroe-theme/simple-version/monroe.zsh-theme -O ~/.oh-my-zsh/themes/monroe.zsh-theme
+link "$dotfiles/zshrc" "$HOME/.zshrc"
+link "$dotfiles/zsh" "$HOME/.zsh"
+link "$dotfiles/sublime-settings/Packages" "$HOME/.config/sublime-text-3/Packages"
+link "$dotfiles/gitconfig" "$HOME/.gitconfig"
+link "$dotfiles/gitignore_global" "$HOME/.gitignore_global"
+echo "#=====> Already done! :D"
+unset link

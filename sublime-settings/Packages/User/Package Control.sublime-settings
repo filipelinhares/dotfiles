@@ -1,0 +1,43 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"Alignment",
+		"All Autocomplete",
+		"Babel",
+		"Better CoffeeScript",
+		"BracketGuard",
+		"Color Highlighter",
+		"ColorSchemeSelector",
+		"CSScomb",
+		"EditorConfig",
+		"Emmet",
+		"Focus File on Sidebar",
+		"GitGutter",
+		"Hayaku - tools for writing CSS faster",
+		"HTML-CSS-JS Prettify",
+		"JavaScript & NodeJS Snippets",
+		"MarkdownEditing",
+		"Material Theme",
+		"Oceanic Color Scheme",
+		"Package Control",
+		"Path Tools",
+		"Random Everything",
+		"Ruby Slim",
+		"Sass",
+		"SCSS",
+		"SideBarEnhancements",
+		"Siteleaf Liquid Syntax",
+		"SublimeLinter",
+		"SublimeLinter-coffeelint",
+		"SublimeLinter-contrib-scss-lint",
+		"SublimeLinter-csslint",
+		"SublimeLinter-jshint",
+		"SublimeLinter-json",
+		"SublimeLinter-jsxhint",
+		"SublimeLinter-rubocop"
+	]
+}

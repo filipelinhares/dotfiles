@@ -1,0 +1,35 @@
+[
+    { "keys": ["ctrl+'"], "command": "toggle_side_bar" },
+    { "keys": ["ctrl+alt+shift+up"], "command": "select_lines", "args": {"forward": false} },
+    { "keys": ["ctrl+alt+shift+down"], "command": "select_lines", "args": {"forward": true} },
+    {
+        "keys": ["ctrl+shift+r"],
+        "command": "set_layout",
+        "args":
+        {
+            "cols": [0.0, 1.0],
+            "rows": [0.0, 0.5, 1.0],
+            "cells": [[0, 0, 1, 1], [0, 1, 1, 2]]
+        }
+    },
+    {
+        "keys": ["ctrl+shift+0"],
+        "command": "set_layout",
+        "args":
+        {
+            "cols": [0.0, 1.0],
+            "rows": [0.0, 1.0],
+            "cells": [[0, 0, 1, 1]]
+        }
+    },
+    {
+        "keys": ["ctrl+shift+c"],
+        "command": "set_layout",
+        "args":
+        {
+            "cols": [0.0, 0.5, 1.0],
+            "rows": [0.0, 1.0],
+            "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
+        }
+    }
+]
