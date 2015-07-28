@@ -8,7 +8,7 @@ source $HOME/.zsh/alias.sh
 source $HOME/.zsh/functions.sh
 
 # Plugin.
-plugins=(git zsh-syntax-highlighting rails bundler z sublime)
+plugins=(git git-extras zsh-syntax-highlighting rails bundler z sublime)
 
 # User configuration
 export PATH=$PATH:"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
