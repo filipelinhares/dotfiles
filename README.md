@@ -1,7 +1,9 @@
-# Filipe's set up
+# Config
 
-## What's inside
-This will install:
+Config is a basic checklist I follow to set up a new Ubuntu's development environment so I can more quickly get back to coding.
+
+## Checklist
+
 - Git
 - ZSH
 - oh-my-zsh
@@ -12,24 +14,19 @@ This will install:
 - Postgres
 - Base64-shell (colors)
 - Linuxbrew
-- Sublime Text 3
+- gVim
+- Font Monaco
 
-And set up all my dotfiles:
+## Config
+
+- [dotvim](https://github.com/filipelinhares/dotvim)
 - zshrc
-- [Sublime Settings](sublime-settings)
 - gitconfig
 - gitignore_global
--	Monroe Theme
+- [Monroe Theme](https://github.com/filipelinhares/monroe-theme)
 
-## Installation
 
-```bash
-git clone git@github.com:filipelinhares/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-script/install
-``` 
-
-After it you'll need to set up your Postgres user:
+**Config Postgres**
 ```bash
 [sudo] -u postgres createuser YOUR_USER -s
 [sudo] -u postgres psql
