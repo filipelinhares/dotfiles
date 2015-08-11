@@ -9,6 +9,7 @@ alias kill='kill -9'
 alias sc='rs'
 
 # Git
+alias git='hub'
 alias rebeise='gcm && gl && gco - && g rebase master'
 alias up='git-up'
 alias rup='bi && rdm'
