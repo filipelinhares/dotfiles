@@ -1,6 +1,15 @@
 # Quick install oh-my-zsh plugins
 
 #
+# Leasot todo parse function
+# https://github.com/pgilad/leasot
+#
+
+todo-check (){
+  leasot -S /**/*.$1
+}
+
+#
 # $ ohmyplugin git@github.com:zsh-users/zsh-syntax-highlighting.git
 #
 

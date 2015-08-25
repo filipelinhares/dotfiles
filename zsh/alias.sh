@@ -1,12 +1,11 @@
 alias myalias='subl $HOME/.zsh/alias.sh'
 alias reload='source $HOME/.zshrc'
 alias c='clear'
-alias subl='subl -a'
+alias ubuntu_status='sudo glances'
+alias :q='exit'
 
 alias who='lsof -wni tcp:3000'
 alias kill='kill -9'
-
-alias sc='rs'
 
 # Git
 alias git='hub'
