@@ -1,6 +1,16 @@
 # Config
+Config is a basic checklist I follow to set up a new OS's development environment so I can more quickly get back to coding.
 
-Config is a basic checklist I follow to set up a new Ubuntu's development environment so I can more quickly get back to coding.
+## Installation
+**curl**
+```bash
+curl -o- https://raw.githubusercontent.com/filipelinhares/config/master/install.sh | bash
+```
+
+**wget**
+```bash
+wget -qo- https://raw.githubusercontent.com/filipelinhares/config/master/install.sh | bash
+```
 
 ## Checklist
 - Git
