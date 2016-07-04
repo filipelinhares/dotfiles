@@ -1,21 +1,53 @@
-alias myalias='subl $HOME/.zsh/alias.sh'
-alias reload='source $HOME/.zshrc'
-alias c='clear'
-alias ubuntu_status='sudo glances'
+alias r='source $HOME/.zshrc'
 alias :q='exit'
+alias rm='trash'
 
 alias who='lsof -wni tcp:3000'
 alias kill='kill -9'
 
+alias vim="gvim"
+
 # Git
 alias git='hub'
-alias rebeise='gcm && gl && gco - && g rebase master'
+alias rebeise='git checkout master && git up && gco - && git rebase master'
 alias up='git-up'
-alias rup='bi && rdm'
 
 # Database Setup
-alias db.yml="cp config/database-sample.yml config/database.yml"
 alias remakedb="bundle exec rake db:drop db:create db:migrate db:seed"
 
 # Imagemagick alias
-alias optjpg="convert -strip -interlace Plane -quality 80"
+alias optjpg="convert -strip -interlace Plane -quality 90"
+
+# Extract
+function extract {
+  if [ -z "$1" ]; then
+    # display usage if no parameters given
+    echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
+ else
+    if [ -f $1 ] ; then
+        # NAME=${1%.*}
+        # mkdir $NAME && cd $NAME
+        case $1 in
+          *.tar.bz2)   tar xvjf ../$1    ;;
+          *.tar.gz)    tar xvzf ../$1    ;;
+          *.tar.xz)    tar xvJf ../$1    ;;
+          *.lzma)      unlzma ../$1      ;;
+          *.bz2)       bunzip2 ../$1     ;;
+          *.rar)       unrar x -ad ../$1 ;;
+          *.gz)        gunzip ../$1      ;;
+          *.tar)       tar xvf ../$1     ;;
+          *.tbz2)      tar xvjf ../$1    ;;
+          *.tgz)       tar xvzf ../$1    ;;
+          *.zip)       unzip ../$1       ;;
+          *.Z)         uncompress ../$1  ;;
+          *.7z)        7z x ../$1        ;;
+          *.xz)        unxz ../$1        ;;
+          *.exe)       cabextract ../$1  ;;
+          *)           echo "extract: '$1' - unknown archive method" ;;
+        esac
+    else
+        echo "$1 - file does not exist"
+    fi
+  fi
+}
+
