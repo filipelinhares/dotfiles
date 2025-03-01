@@ -1,47 +1,25 @@
 [user]
-  name = Filipe Linhares
-  email = lip.linhares@gmail.com
+	email = lip.linhares@gmail.com
+	name = Filipe Linhares
 
-[color]
-  ui = true
-
-[color "grep"]
-  match = cyan bold
-  selected = blue
-  context = normal
-  filename = magenta
-  linenumber = green
-  separator = yellow
-  function = blue
-
-[pretty]
-  line = "%C(auto)%h%d %s %C(yellow)by %C(blue)%an %C(green)%ar"
-  compact = "%C(auto)%h %s %C(green)%ar%n %C(auto)%d%n"
-  detail = "%C(auto)%h %s%n  %C(yellow)by %C(blue)%an %C(magenta)<%ae> [%G?] %C(green)%ar%n %C(auto)%d%n"
-
-[merge]
-  defaultToUpstream = true
-  tool = vimdiff
-
-[mergetool]
-  keepBackup = false
-
-[push]
-  default = upstream
-
-[credential]
-  helper = cache --timeout=3600
-
-[grep]
-  lineNumber = true
-
-[advice]
-  detachedHead = false
+[alias]
+	gg = push -u origin HEAD
+	up = pull --rebase --autostash
+	l = branch --sort=-committerdate
+	old = branch --sort=committerdate
+    log = log --oneline
+	s = status
+	b = branch
+	bl = branch
+    co = checkout
+	master = checkout master
+	main = checkout main
+    d = diff
 
 [core]
-  excludesfile = ~/.gitignore_global
-  editor = vim
+	editor = nvim
 
-# Allow local customizations in the .gitconfig_local file
-[include]
-  path = ~/.gitconfig_local
+[color "diff"]
+    meta = green
+    old = red
+    new = green
